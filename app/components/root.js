@@ -1,4 +1,5 @@
 import React from 'react'
+import Campus from './campusComponent'
 
 const Root = () => {
   return (
@@ -7,9 +8,13 @@ const Root = () => {
         Welcome!
       </nav>
       <main>
+      <div className='components'>
+      </div>
+      <Campus></Campus>
         <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
         <p>This seems like a nice place to get started with some Routes!</p>
       </main>
+
     </div>
   )
 }

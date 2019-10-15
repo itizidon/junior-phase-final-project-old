@@ -1,15 +1,7 @@
-// `combineReducers` is not currently being used...but it should!
-// When you're ready to use it, un-comment the line below!
+import Campusreducer from './Campusreducer'
+import Studentreducer from './Studentsreducer'
+import { combineReducers } from 'redux'
 
-// import {combineReducers} from 'redux'
+const combinedReducers = combineReducers({Studentreducer,Campusreducer})
 
-const initialState = {}
-
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
-
-export default rootReducer
+export default combinedReducers
