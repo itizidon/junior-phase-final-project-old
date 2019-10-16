@@ -1,16 +1,25 @@
-const SINGLESTUDENT = 'SINGLE_STUDENT'
+import axios from 'axios'
 
-export const single = (something)=>{
+const ALLSTUDENTS = 'ALL_STUDENTS'
+
+const allStudents = (something)=>{
   return {
-    type: SINGLESTUDENT,
+    type: ALLSTUDENTS,
     something
+  }
+}
+
+export const allStudentsDispatch = ()=>{
+  return async (dispatch)=>{
+    const {data} = await axios.get('/api/students')
+    dispatch(allStudents(data))
   }
 }
 
 const rootReducer = (state = [], action) => {
   switch (action.type) {
-    case SINGLESTUDENT:{
-      return state
+    case ALLSTUDENTS:{
+      return [...state, action.something]
     }
     default:
       return state

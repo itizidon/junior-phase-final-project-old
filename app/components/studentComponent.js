@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux'
-import { lol } from "../reducers/Campusreducer";
-// import axios from 'axios'
+import { allStudentsDispatch } from "../reducers/Studentsreducer";
+import axios from 'axios'
 // import store from "../store";
 
 // const SINGLECAMPUS = 'SINGLE_CAMPUS'
@@ -13,10 +13,10 @@ const mapStateToProps = (state) =>{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  single: () => dispatch(lol())
+  allStudentDispatch: () => dispatch(allStudentsDispatch())
 })
 
-class Campus extends Component {
+class Student extends Component {
   constructor(props) {
     super(props);
   }
@@ -24,7 +24,7 @@ class Campus extends Component {
     // const res = await axios.get('/api/students');
     // console.log(res.data)
 
-    this.props.single()
+    this.props.allStudentDispatch()
 
     // console.log(this.props.state)
   }
@@ -32,7 +32,8 @@ class Campus extends Component {
   //   this.props.single
   // }
   render() {
-    if(this.props.state.Campusreducer[0]===undefined){
+    console.log(this.props.state.Studentreducer[0])
+    if(this.props.state.Studentreducer[0]===undefined){
       return(
         <div className="campuses">
         </div>
@@ -41,15 +42,16 @@ class Campus extends Component {
     else{
     return (
       <div className="campuses">
-        {this.props.state.Campusreducer[0].map(cur=>{
+        {this.props.state.Studentreducer[0].map(cur=>{
           return (<div key={cur.id}>
-          <p>{cur.name}</p>
-          <img src={cur.imageUrl}/>
+                  <p>{cur.firstName}{cur.lastName}</p>
                   </div>)
         })}
       </div>
-    );
-  }}
+      )
+  }
+}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Campus)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Student)
